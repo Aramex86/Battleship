@@ -1,0 +1,20 @@
+{
+  "name": "batteship",
+  "version": "1.0.0",
+  "description": "BATTLESHIP",
+  "main": "code.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass"
+  },
+  "author": "Slava",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "compile-sass": "^1.0.3",
+    "live-server": "^1.2.1",
+    "npm-run-all": "^4.1.5",
+    "sass-watch": "^0.1.0"
+  }
+}
