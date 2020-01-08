@@ -1,4 +1,5 @@
-const location1= 2;
+/* let randomLoc = Math.floor(Math.random()*5);
+const location1= randomLoc;
 const location2= 3;
 const location3= 4;
 let guess ="guess";
@@ -30,3 +31,4 @@ while(isSunk == false){
 let stats = `You took ${guesses} guesses to sink the battleship, which means your shooting accuracy was ${3/guesses*100}%`;
 alert(stats);
 
+ */

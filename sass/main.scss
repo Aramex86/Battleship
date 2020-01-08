@@ -1,0 +1,28 @@
+
+
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing:inherit;
+}
+
+html{
+    box-sizing: border-box;
+}
+body{
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    color: #fff;
+    margin-top: 2rem;
+}
+
+@import "playground";
