@@ -32,3 +32,32 @@ let stats = `You took ${guesses} guesses to sink the battleship, which means you
 alert(stats);
 
  */
+const view = {
+
+    displayMessage:function(msg) { 
+        const messageArea = document.getElementById('messagearea');
+
+        messageArea.innerHTML = msg;
+     },
+
+    displayMiss:function(location) { 
+        const cell = document.getElementById(location);
+        cell.setAttribute("class","miss");
+
+
+     },
+
+    displayHit:function(location) { 
+        const cell = document.getElementById(location);
+        cell.setAttribute("class","hit");
+     }
+}
+
+view.displayMiss("00");
+view.displayHit("08");
+view.displayMiss("17");
+view.displayHit("26");
+view.displayMiss("34");
+view.displayHit("42");
+view.displayHit("50");
+view.displayMessage("you fire!");

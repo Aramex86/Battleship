@@ -11,6 +11,31 @@
     margin: auto;
     left: -3.4px;
     top: 2.3px;
+    & form{
+        position: absolute;
+        right: 0;
+        bottom: -10%;
+        padding: 15px;
+        background:rgba(83, 175, 19, .3);
+        & input{
+            background-color: rgb(152, 207, 113);
+            border-color: rgb(83, 175, 19);
+            font-size: 1em;
+            font-weight: bold;
+        }
+        & input:nth-child(2){
+            background:rgb(83, 175, 19);
+            border: none;
+            width: 50px;
+            height: 21px;
+            outline: none;
+            font-size: .8rem;
+            font-weight: 400;
+            color: rgb(73, 7, 7);
+
+
+        }
+    }
 }
 .row{
     width: 100%;
@@ -19,8 +44,25 @@
     &>div{
         width: 94px;
         height: 94px;
-        margin-left: 2.4px;
+        margin-left: 2.2px;
         margin-top: 2.4px;
     }
 }
 
+.messagearia{
+    position: absolute;
+    top: -16%;
+    left: -20%;
+    font-size: 1.5rem;
+    color: red;
+    text-transform: uppercase;
+    }
+
+.hit{
+    background:url("../img/ship.png") center center no-repeat;
+
+}
+
+.miss{
+    background: url("../img/miss.png") center center no-repeat;
+}

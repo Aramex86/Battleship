@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <title>BATTLESHIP</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <h1>Play BATTLESHIP</h1>
     <div class="playground">
         <div id="board">
+            <div id="messagearea" class="messagearia"></div>
             <div class="row">
                 <div id="00"></div>
                 <div id="01"></div>
@@ -78,12 +81,13 @@
                 <div id="65"></div>
                 <div id="66"></div> -->
             </div>
-           
-            
-
+            <form>
+                <input type="text" id="guesInput" placeholder="A0">
+                <input type="button" id="firebutton" value="FIRE!">
+            </form>
         </div>
-        
     </div>
     <script src="js/code.js"></script>
 </body>
+
 </html>
