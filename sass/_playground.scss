@@ -65,6 +65,8 @@ td {
     top: 0px;
     left: 0px;
     color: rgb(253, 1, 35);
+    //transform: rotate(-20deg);
+    animation: pulse 1s infinite;
     }
 
 .hit {
@@ -74,4 +76,14 @@ td {
 
 .miss {
     background: url("../img/miss.png") center center no-repeat;
+}
+
+@keyframes pulse{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(2);
+        font-weight: bold;
+    }
 }

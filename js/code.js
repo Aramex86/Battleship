@@ -5,6 +5,8 @@ const view = {
         const messageArea = document.getElementById('messagearea');
 
         messageArea.innerHTML = msg;
+
+        
     },
 
     displayMiss: function (location) {
@@ -38,15 +40,15 @@ const model = {
     shipsSunk: 0,
 
     ships: [{
-            locations: ["06", "16", "26"],
+            locations: [0,0,0],
             hits: ["", "", ""]
         },
         {
-            locations: ["24", "34", "44"],
+            locations: [0,0,0],
             hits: ["", "", ""]
         },
         {
-            locations: ["10", "11", "12"],
+            locations: [0,0,0],
             hits: ["", "", ""]
         }
     ],
@@ -89,6 +91,71 @@ const model = {
             }
         }
         return true;
+    },
+
+    //основной метод Создает в модели массив ships с количеством кораблей, определяемым свойством numShips модели.
+    generateShipLocations: function() {
+        let locations;
+        //Для каждого корабля генерируется набор позиций, то есть занимаемых клеток.
+        for(let i = 0; i < this.numShips; i++){
+            do{
+                //Генерируем новый набор позиций...
+                locations = this.generateShip();
+                //...и проверяем, перекрываются ли эти позиции с существующими кораблями на доске.
+            }while( this.collision(locations));
+            //Полученные позиции без перекрытий сохраняются в свойстве locations объекта корабля в массиве model.ships.
+            this.ships[i].locations = locations;
+        }
+    },
+
+    //метод создает один корабль, находящийся в произвольном месте игрового поля.
+
+    generateShip:function() {
+        //генерируем число от 0 до 1 и умножаем результат на 2, чтобы получить число в диапазоне от 0 до 2 (не включая 2). Затем Math.floor преобразует результат в 0 или 1.
+        const direction = Math.floor(Math.random()*2);
+        if(direction === 1){
+            // Сгенерировать начальную позицию для горизонтального корабля
+            row = Math.floor(Math.random() * this.boardSize);
+            col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+        }else{
+            // Сгенерировать начальную позицию для вертикального корабля
+            row = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+            col = Math.floor(Math.random() * this.boardSize);
+        }
+        //Набор позиций нового корабля начинается с пустого массива, в который последовательно добавляются элементы.
+        const newShipLocations = [];
+            //В цикле до количества позиций в корабле.
+        for(let i = 0; i < this.shipLength;i++){
+            
+            if(direction === 1){
+                // добавить в массив для горизонтального корабля
+                newShipLocations.push(`${row}${(col + i)}`);
+            }else{
+                // добавить в массив для вертикального корабля
+                newShipLocations.push(`${(row + i)}${col}`);
+            }
+
+        }
+
+        return newShipLocations;
+
+    },
+
+    //метод получает один корабль и проверяет, что тот не перекрывается с кораблями, уже находящимися на игровом поле.
+
+    collision: function(locations) {
+        for(let i; i < this.numShips; i++){
+            const ship = model.ships[i];
+
+            //проверить, встречается ли какая-либо из позиций массива locations нового корабля в массиве locations существующих кораблей
+            for (let j = 0; j < locations.length; j++) {
+                //Метод indexOf проверяет, присутствует ли заданная позиция в массиве.
+                if(ship.locations.indexOf(locations[j]) >= 0){
+                    return true;
+                }
+            }
+        }
+        return false
     }
 
 }
@@ -153,6 +220,7 @@ function init() {
     //Добавляем новый обработчик — для обработки событий нажатия клавиш
     const guessInput = document.getElementById("guessInput");
     guessInput.onkeypress = handleKeyPress;
+    model.generateShipLocations();
 }
 
 
