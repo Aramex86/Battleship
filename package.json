@@ -11,7 +11,7 @@
   "author": "Slava",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "compile-sass": "^1.0.3",
     "live-server": "^1.2.1",
     "node-sass": "^4.13.0",
